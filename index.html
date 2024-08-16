@@ -1,60 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Learning Platform</title>
-    <link rel="stylesheet" href="styles.css"> <!-- CSS 파일 링크 -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <title>운동 교육 플랫폼</title>
+    <style>
+        /* CSS는 여기에 추가될 것입니다 */
+    </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>My Learning Platform</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="signup.html">Sign Up</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>운동 교육 플랫폼</h1>
+        <nav>
+            <button id="loginBtn">로그인</button>
+            <button id="signupBtn">회원가입</button>
+        </nav>
     </header>
 
     <main>
-        <div class="container">
-            <h2>Login with Your Account</h2>
-            <div id="g_id_onload"
-                data-client_id="110248796105-f9ph80or30r6miuv6em7cfce1c826d9m.apps.googleusercontent.com"
-                data-login_uri="https://nongguwang.github.io/test/"
-                data-auto_prompt="false">
-            </div>
-            <div id="g_id_signin"></div>
-        </div>
+        <section id="videoSection">
+            <h2>강의 비디오</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </section>
+
+        <section id="quizSection">
+            <h2>퀴즈</h2>
+            <div id="questionContainer"></div>
+            <button id="submitAnswer">답변 제출</button>
+            <div id="result"></div>
+        </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 My Learning Platform</p>
-        </div>
-    </footer>
-
     <script>
-        window.onload = function () {
-            google.accounts.id.initialize({
-                client_id: '110248796105-f9ph80or30r6miuv6em7cfce1c826d9m.apps.googleusercontent.com',
-                callback: handleCredentialResponse
-            });
-            google.accounts.id.renderButton(
-                document.getElementById('g_id_signin'),
-                { theme: 'outline', size: 'large' }
-            );
-        };
-
-        function handleCredentialResponse(response) {
-            console.log("Encoded JWT ID token: " + response.credential);
-            // Handle Google login response
-        }
+        // JavaScript 코드는 여기에 추가될 것입니다
     </script>
 </body>
 </html>

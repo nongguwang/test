@@ -1,62 +1,71 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>간단한 웹페이지</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        p {
-            color: #666;
-        }
-
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>My Learning Platform</title>
+    <link rel="stylesheet" href="styles.css"> <!-- CSS 파일 링크 -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://cdn.apple.com/signin/1.0/signin.js" async defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1>안녕하세요!</h1>
-        <p>이것은 간단한 웹페이지 예제입니다.</p>
-        <button onclick="showAlert()">클릭하세요</button>
-    </div>
+    <header>
+        <div class="container">
+            <h1>My Learning Platform</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Login with Your Account</h2>
+            <div id="g_id_onload"
+                data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                data-login_uri="http://localhost:3000/auth/google/callback"
+                data-auto_prompt="false">
+            </div>
+            <div id="g_id_signin"></div>
+            <div id="appleid-signin" class="signin-button">
+                <button id="apple-login-button">Sign in with Apple</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 My Learning Platform</p>
+        </div>
+    </footer>
 
     <script>
-        function showAlert() {
-            alert("버튼이 클릭되었습니다!");
+        // Google Login Initialization
+        window.onload = function () {
+            google.accounts.id.initialize({
+                client_id: 'YOUR_GOOGLE_CLIENT_ID',
+                callback: handleCredentialResponse
+            });
+            google.accounts.id.renderButton(
+                document.getElementById('g_id_signin'),
+                { theme: 'outline', size: 'large' }
+            );
+        };
+
+        function handleCredentialResponse(response) {
+            console.log("Encoded JWT ID token: " + response.credential);
+            // Handle Google login response
         }
+
+        // Apple Login Button Event
+        document.getElementById('apple-login-button').addEventListener('click', function() {
+            const appleAuthURL = `https://appleid.apple.com/auth/authorize?response_type=code&client_id=YOUR_APPLE_CLIENT_ID&redirect_uri=http://localhost:3000/auth/apple/callback`;
+            window.location.href = appleAuthURL;
+        });
     </script>
 </body>
 </html>

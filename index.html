@@ -6,7 +6,7 @@
     <title>My Learning Platform</title>
     <link rel="stylesheet" href="styles.css"> <!-- CSS 파일 링크 -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="https://cdn.apple.com/signin/1.0/signin.js" async defer></script>
+    <script src="https://appleid.apple.com/auth/authorize" async defer></script>
 </head>
 <body>
     <header>
@@ -31,7 +31,7 @@
                 data-login_uri="http://localhost:3000/auth/google/callback"
                 data-auto_prompt="false">
             </div>
-            <div id="g_id_signin"></div>
+            <div id="g_id_signin" class="g-signin2"></div>
             <!-- Apple Login Button -->
             <div id="appleid-signin" class="signin-button">
                 <button id="apple-login-button">Sign in with Apple</button>
@@ -63,11 +63,14 @@
             // Handle Google login response
         }
 
-        // Apple Login Button Event
-        document.getElementById('apple-login-button').addEventListener('click', function() {
+        // Apple Login Initialization
+        window.onload = function () {
+            // Ensure appleAuthURL is updated with your client ID and redirect URI
             const appleAuthURL = `https://appleid.apple.com/auth/authorize?response_type=code&client_id=YOUR_APPLE_CLIENT_ID&redirect_uri=http://localhost:3000/auth/apple/callback`;
-            window.location.href = appleAuthURL;
-        });
+            document.getElementById('apple-login-button').onclick = function() {
+                window.location.href = appleAuthURL;
+            };
+        };
     </script>
 </body>
 </html>

@@ -83,4 +83,8 @@ footer .container {
     background-color: #333; /* 애플 버튼 호버 색상 */
 }
 
-/* 구글 버튼은 Google의 JavaScript 라이브러리에서 직접 스타일을 적용하므로 추가 CSS가 필요 없습니다 */
+/* 구글 버튼 스타일 조정 */
+.g-signin2 {
+    width: 200px !important;
+    height: 50px !important;
+}

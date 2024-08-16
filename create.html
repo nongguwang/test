@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문제 출제</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="#">MyEduAI</a>
+      </div>
+      <nav>
+        <a href="index.html">홈페이지</a>
+        <a href="create.html" class="active">문제 출제</a>
+        <a href="solve.html">문제 풀기</a>
+        <a href="stats.html">통계</a>
+        <a href="profile.html">프로필</a>
+        <a href="login.html" class="login-btn">로그인/회원가입</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Problem Creation Page -->
+  <main>
+    <div class="container">
+      <h1>문제 출제</h1>
+      <form id="problem-form">
+        <div class="form-group">
+          <label for="level">레벨 선택:</label>
+          <select id="level" name="level">
+            <option value="beginner">초급</option>
+            <option value="intermediate">중급</option>
+            <option value="advanced">고급</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="goal">학습 목표 선택:</label>
+          <select id="goal" name="goal">
+            <option value="certification">자격증 준비</option>
+            <option value="exam">학교 시험 대비</option>
+            <option value="general">일반 학습</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="topic">주제 선택:</label>
+          <input type="text" id="topic" name="topic" placeholder="주제 입력 또는 선택">
+        </div>
+
+        <div class="form-group">
+          <label>문제 유형 선택:</label>
+          <input type="checkbox" id="multiple-choice" name="type" value="multiple-choice">
+          <label for="multiple-choice">선택형</label>
+          <input type="checkbox" id="short-answer" name="type" value="short-answer">
+          <label for="short-answer">단답형</label>
+          <input type="checkbox" id="essay" name="type" value="essay">
+          <label for="essay">서술형</label>
+          <input type="checkbox" id="coding" name="type" value="coding">
+          <label for="coding">코딩 문제</label>
+        </div>
+
+        <div class="form-group">
+          <label for="difficulty">난이도 조절:</label>
+          <input type="range" id="difficulty" name="difficulty" min="1" max="10" step="1" value="5">
+        </div>
+
+        <div class="form-group">
+          <label for="updates">실시간 문제 업데이트:</label>
+          <input type="checkbox" id="updates" name="updates">
+        </div>
+
+        <button type="submit" class="submit-btn">문제 출제</button>
+      </form>
+
+      <div id="preview-container" class="hidden">
+        <h2>문제 미리보기</h2>
+        <div id="preview-content"></div>
+        <button id="edit-btn" class="edit-btn">편집</button>
+        <button id="reissue-btn" class="reissue-btn">재출제</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2024 MyEduAI. All rights reserved.</p>
+      <ul>
+        <li><a href="#contact">연락처</a></li>
+        <li><a href="#privacy">개인정보 처리방침</a></li>
+        <li><a href="#terms">이용 약관</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="scripts.js"></script>
+</body>
+</html>

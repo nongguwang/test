@@ -6,7 +6,6 @@
     <title>My Learning Platform</title>
     <link rel="stylesheet" href="styles.css"> <!-- CSS 파일 링크 -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="https://appleid.apple.com/auth/authorize" async defer></script>
 </head>
 <body>
     <header>
@@ -25,17 +24,12 @@
     <main>
         <div class="container">
             <h2>Login with Your Account</h2>
-            <!-- Google Login Button -->
             <div id="g_id_onload"
                 data-client_id="110248796105-f9ph80or30r6miuv6em7cfce1c826d9m.apps.googleusercontent.com"
                 data-login_uri="http://localhost:3000/auth/google/callback"
                 data-auto_prompt="false">
             </div>
-            <div id="g_id_signin" class="g-signin2"></div>
-            <!-- Apple Login Button -->
-            <div id="appleid-signin" class="signin-button">
-                <button id="apple-login-button">Sign in with Apple</button>
-            </div>
+            <div id="g_id_signin"></div>
         </div>
     </main>
 
@@ -46,7 +40,6 @@
     </footer>
 
     <script>
-        // Google Login Initialization
         window.onload = function () {
             google.accounts.id.initialize({
                 client_id: '110248796105-f9ph80or30r6miuv6em7cfce1c826d9m.apps.googleusercontent.com',
@@ -62,15 +55,6 @@
             console.log("Encoded JWT ID token: " + response.credential);
             // Handle Google login response
         }
-
-        // Apple Login Initialization
-        window.onload = function () {
-            // Ensure appleAuthURL is updated with your client ID and redirect URI
-            const appleAuthURL = `https://appleid.apple.com/auth/authorize?response_type=code&client_id=YOUR_APPLE_CLIENT_ID&redirect_uri=http://localhost:3000/auth/apple/callback`;
-            document.getElementById('apple-login-button').onclick = function() {
-                window.location.href = appleAuthURL;
-            };
-        };
     </script>
 </body>
 </html>

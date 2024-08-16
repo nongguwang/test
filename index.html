@@ -1,89 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 문제 출제 서비스</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 기반 맞춤형 문제 출제 서비스</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- 헤더 섹션 -->
-    <header>
-        <div class="logo">AI 문제 출제 서비스</div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#problem-generation">문제 출제</a></li>
-                <li><a href="#profile">프로필</a></li>
-                <li><a href="#login">로그인/회원가입</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="#">MyEduAI</a>
+      </div>
+      <nav>
+        <a href="#create-problems">문제 출제</a>
+        <a href="#solve-problems">문제 풀기</a>
+        <a href="#stats">통계</a>
+        <a href="#profile">프로필</a>
+        <a href="#login" class="login-btn">로그인/회원가입</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- 메인 배너 -->
-    <section id="home" class="banner">
-        <h1>AI 기반 맞춤형 문제 출제 서비스</h1>
-        <button onclick="window.location.href='#problem-generation'">시작하기</button>
-    </section>
+  <!-- Main Banner -->
+  <section class="hero">
+    <div class="container">
+      <h1>AI 기반 맞춤형 문제 출제 서비스</h1>
+      <p>정확하고 개인화된 문제 출제로 학습을 한 단계 업그레이드하세요!</p>
+      <a href="#create-problems" class="cta-button">문제 출제 시작하기</a>
+    </div>
+  </section>
 
-    <!-- 문제 출제 기능 섹션 -->
-    <section id="problem-generation" class="container">
-        <h2>맞춤형 문제 출제</h2>
-        <form id="problemForm">
-            <label for="level">레벨 선택:</label>
-            <select id="level" name="level">
-                <option value="beginner">초급</option>
-                <option value="intermediate">중급</option>
-                <option value="advanced">고급</option>
-            </select>
+  <!-- Features Section -->
+  <section id="features">
+    <div class="container">
+      <h2>서비스 주요 기능</h2>
+      <div class="feature">
+        <h3>맞춤형 문제 생성</h3>
+        <p>사용자 수준, 목표, 주제에 맞는 문제를 AI가 생성합니다.</p>
+      </div>
+      <div class="feature">
+        <h3>자동 채점</h3>
+        <p>제출된 답안을 자동으로 채점하고 점수를 기록합니다.</p>
+      </div>
+      <div class="feature">
+        <h3>실시간 순위</h3>
+        <p>사용자들의 성과를 기반으로 실시간 순위를 제공합니다.</p>
+      </div>
+    </div>
+  </section>
 
-            <label for="goal">학습 목표 선택:</label>
-            <select id="goal" name="goal">
-                <option value="certification">자격증 준비</option>
-                <option value="exam">학교 시험 대비</option>
-                <option value="general">일반 학습</option>
-            </select>
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <div class="container">
+      <h2>사용자 후기</h2>
+      <div class="testimonial">
+        <p>"이 서비스 덕분에 학습 효율이 크게 향상되었습니다!" - 홍길동</p>
+      </div>
+      <div class="testimonial">
+        <p>"맞춤형 문제 출제가 매우 유용합니다." - 김철수</p>
+      </div>
+    </div>
+  </section>
 
-            <label for="topic">주제 선택:</label>
-            <input type="text" id="topic" name="topic" placeholder="예: 수학, 역사, 프로그래밍">
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2024 MyEduAI. All rights reserved.</p>
+      <ul>
+        <li><a href="#contact">연락처</a></li>
+        <li><a href="#privacy">개인정보 처리방침</a></li>
+        <li><a href="#terms">이용 약관</a></li>
+      </ul>
+    </div>
+  </footer>
 
-            <label for="questionType">문제 유형 선택:</label>
-            <div>
-                <input type="checkbox" id="multipleChoice" name="questionType" value="multipleChoice">
-                <label for="multipleChoice">선택형</label>
-
-                <input type="checkbox" id="shortAnswer" name="questionType" value="shortAnswer">
-                <label for="shortAnswer">단답형</label>
-
-                <input type="checkbox" id="essay" name="questionType" value="essay">
-                <label for="essay">서술형</label>
-
-                <input type="checkbox" id="coding" name="questionType" value="coding">
-                <label for="coding">코딩 문제</label>
-            </div>
-
-            <label for="difficulty">난이도 조절:</label>
-            <input type="range" id="difficulty" name="difficulty" min="1" max="10">
-
-            <label for="realTimeUpdate">실시간 문제 업데이트:</label>
-            <input type="checkbox" id="realTimeUpdate" name="realTimeUpdate">
-
-            <button type="button" onclick="generateProblem()">문제 생성</button>
-        </form>
-
-        <!-- 문제 미리보기 -->
-        <div id="problemPreview" class="preview">
-            <h3>문제 미리보기</h3>
-            <p id="generatedProblem">문제를 생성해주세요.</p>
-            <button type="button">문제 풀기</button>
-        </div>
-    </section>
-
-    <!-- 푸터 섹션 -->
-    <footer>
-        <p>&copy; 2024 AI 문제 출제 서비스. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <!-- JavaScript -->
+  <script src="scripts.js"></script>
 </body>
 </html>

@@ -4,7 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>운동 교육 플랫폼</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            margin-top: 1rem;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #videoSection, #quizSection {
+            margin-bottom: 2rem;
+        }
+        #questionContainer {
+            margin-bottom: 1rem;
+            background-color: #e9e9e9;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        #result {
+            margin-top: 1rem;
+            font-weight: bold;
+            padding: 1rem;
+            background-color: #d4edda;
+            border-radius: 5px;
+            display: none;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,7 +69,7 @@
     <main>
         <section id="videoSection">
             <h2>강의 비디오</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </section>
 
         <section id="quizSection">
@@ -29,6 +80,87 @@
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <script>
+        const questions = [
+            {
+                type: "fill_blank",
+                question: "유산소 운동은 ____ 건강에 좋습니다.",
+                answer: "심장",
+                explanation: "유산소 운동은 심장 건강을 증진시킵니다."
+            },
+            {
+                type: "true_false",
+                question: "웨이트 트레이닝은 근육량 증가에 도움이 됩니다.",
+                answer: true,
+                explanation: "웨이트 트레이닝은 근육 성장을 자극합니다."
+            },
+            {
+                type: "multiple_choice",
+                question: "다음 중 유산소 운동이 아닌 것은?",
+                options: ["조깅", "수영", "벤치프레스", "사이클링"],
+                answer: 2,
+                explanation: "벤치프레스는 무산소 운동입니다."
+            },
+            {
+                type: "essay",
+                question: "운동이 정신 건강에 미치는 영향에 대해 설명하세요.",
+                modelAnswer: "운동은 스트레스 감소, 기분 개선, 자신감 향상 등 정신 건강에 긍정적인 영향을 줍니다.",
+                explanation: "개인의 답변에 따라 평가합니다."
+            }
+        ];
+
+        let currentQuestion = null;
+
+        function displayQuestion() {
+            currentQuestion = questions[Math.floor(Math.random() * questions.length)];
+            const container = document.getElementById('questionContainer');
+            
+            let html = `<h3>${currentQuestion.question}</h3>`;
+            
+            switch(currentQuestion.type) {
+                case 'fill_blank':
+                    html += `<input type="text" id="answer">`;
+                    break;
+                case 'true_false':
+                    html += `
+                        <input type="radio" name="answer" value="true" id="true"> <label for="true">참</label><br>
+                        <input type="radio" name="answer" value="false" id="false"> <label for="false">거짓</label>
+                    `;
+                    break;
+                case 'multiple_choice':
+                    html += currentQuestion.options.map((option, index) => 
+                        `<input type="radio" name="answer" value="${index}" id="option${index}"> <label for="option${index}">${option}</label>`
+                    ).join('<br>');
+                    break;
+                case 'essay':
+                    html += `<textarea id="answer" rows="4" cols="50"></textarea>`;
+                    break;
+            }
+
+            container.innerHTML = html;
+        }
+
+        function checkAnswer() {
+            const userAnswer = document.querySelector('input[name="answer"]:checked')?.value || document.getElementById('answer')?.value;
+            const resultDiv = document.getElementById('result');
+
+            if (currentQuestion.type === 'essay') {
+                resultDiv.innerHTML = `모범 답안: ${currentQuestion.modelAnswer}<br>설명: ${currentQuestion.explanation}`;
+            } else {
+                const isCorrect = userAnswer == currentQuestion.answer;
+                resultDiv.innerHTML = isCorrect ? 
+                    `정답입니다!<br>설명: ${currentQuestion.explanation}` : 
+                    `틀렸습니다. 정답은 ${currentQuestion.answer}입니다.<br>설명: ${currentQuestion.explanation}`;
+            }
+            resultDiv.style.display = 'block';
+        }
+
+        document.getElementById('submitAnswer').addEventListener('click', checkAnswer);
+        displayQuestion();
+
+        // 로그인 및 회원가입 버튼 이벤트 (예시)
+        document.getElementById('loginBtn').addEventListener('click', () => alert('로그인 기능은 아직 구현되지 않았습니다.'));
+        document.getElementById('signupBtn').addEventListener('click', () => alert('회원가입 기능은 아직 구현되지 않았습니다.'));
+    </script>
 </body>
 </html>

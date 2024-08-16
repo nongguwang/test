@@ -1,124 +1,70 @@
-/* 기본 스타일 초기화 */
-* {
+/* styles.css */
+
+/* 기본 스타일 설정 */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f4f4f4;
 }
 
-/* 전체 배경색과 폰트 설정 */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5; /* 연한 회색 배경 */
-    color: #333; /* 어두운 회색 텍스트 */
-}
-
-/* 헤더 스타일 */
 header {
-    background-color: #333; /* 어두운 회색 배경 */
-    color: #fff; /* 흰색 텍스트 */
-    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
 }
 
 header .container {
-    width: 80%;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
 header h1 {
-    font-size: 1.5em;
+    margin: 0;
 }
 
-header nav ul {
+nav ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
 }
 
-header nav ul li {
-    margin-left: 20px;
+nav li {
+    margin-left: 15px;
 }
 
-header nav ul li a {
+nav a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
 }
 
-header nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* 메인 콘텐츠 스타일 */
 main {
-    padding: 40px 0;
+    padding: 20px;
     text-align: center;
 }
 
-main h2 {
-    margin-bottom: 20px;
-    color: #007bff; /* 푸른색 */
-}
-
-/* 로그인 버튼 스타일 */
-#apple-login-button {
-    background-color: #000; /* 검정색 배경 */
-    color: #fff; /* 흰색 텍스트 */
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-#apple-login-button:hover {
-    background-color: #333; /* 어두운 회색 배경 */
-}
-
-/* 푸른색 포인트 */
-#google-login-button {
-    background-color: #4285f4; /* 구글 블루 */
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-#google-login-button:hover {
-    background-color: #357ae8; /* 구글 블루 다크 */
-}
-
-/* 푸터 스타일 */
 footer {
-    background-color: #333; /* 어두운 회색 배경 */
-    color: #fff; /* 흰색 텍스트 */
-    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
     text-align: center;
+    padding: 10px 0;
 }
 
 footer .container {
-    width: 80%;
-    margin: 0 auto;
-}
-/* style.css */
-
-/* 로그인 컨테이너 스타일 */
-.login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* 화면 전체 높이 */
-    background-color: #f4f4f4; /* 배경색 */
+    padding: 0 20px;
 }
 
-/* 공통 버튼 스타일 */
-.login-btn {
+/* 로그인 버튼 스타일 */
+.signin-button {
+    margin: 20px 0;
+}
+
+#apple-login-button {
     width: 200px; /* 버튼 너비 */
     height: 50px; /* 버튼 높이 */
     border: none; /* 기본 테두리 제거 */
@@ -126,27 +72,15 @@ footer .container {
     font-size: 16px; /* 글꼴 크기 */
     font-weight: bold; /* 글꼴 두께 */
     color: #fff; /* 글자 색상 */
-    margin: 10px 0; /* 위아래 여백 */
+    background-color: #000; /* 애플 검은색 */
     cursor: pointer; /* 포인터 커서 */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* 구글 버튼 스타일 */
-.google-btn {
-    background-color: #4285F4; /* 구글 파란색 */
-}
-
-.google-btn:hover {
-    background-color: #357AE8; /* 구글 버튼 호버 색상 */
-}
-
-/* 애플 버튼 스타일 */
-.apple-btn {
-    background-color: #000; /* 애플 검은색 */
-}
-
-.apple-btn:hover {
+#apple-login-button:hover {
     background-color: #333; /* 애플 버튼 호버 색상 */
 }
+
+/* 구글 버튼은 Google의 JavaScript 라이브러리에서 직접 스타일을 적용하므로 추가 CSS가 필요 없습니다 */
